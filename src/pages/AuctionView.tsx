@@ -79,7 +79,7 @@ const AuctionView: React.FC<AuctionViewProps> = ({ marketplaceAddr }) => {
   const [bid, setbid] = useState<string>('');
 
   useEffect(() => {
-    handleFetchAuctions();
+    handleFetchAuctions(filter);
   }, []);
 
   const handleFetchAuctions = async (filter = 1) => {
