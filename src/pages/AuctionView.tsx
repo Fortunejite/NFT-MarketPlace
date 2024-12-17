@@ -87,7 +87,7 @@ const AuctionView: React.FC<AuctionViewProps> = ({ marketplaceAddr }) => {
       let functionName = filter === 1 ? 'list_all_auctions' : filter === 2 ? 'list_past_auctions' : 'list_active_auctions'
       const auctions = (
         await client.view({
-          function: `${marketplaceAddr}::NFTMarketplaceV3::${functionName}`,
+          function: `${marketplaceAddr}::NFTMarketplaceV2::${functionName}`,
           arguments: [marketplaceAddr, '100', '0'],
           type_arguments: [],
         })
@@ -104,7 +104,7 @@ const AuctionView: React.FC<AuctionViewProps> = ({ marketplaceAddr }) => {
       const decodedAuctions = await Promise.all(
         auctions.map(async (auction) => {
           const nftDetails = await client.view({
-            function: `${marketplaceAddr}::NFTMarketplaceV3::get_nft_details`,
+            function: `${marketplaceAddr}::NFTMarketplaceV2::get_nft_details`,
             arguments: [marketplaceAddr, auction?.nft_id.toString()],
             type_arguments: [],
           });
@@ -176,7 +176,7 @@ const AuctionView: React.FC<AuctionViewProps> = ({ marketplaceAddr }) => {
       
       const entryFunctionPayload = {
         type: 'entry_function_payload',
-        function: `${marketplaceAddr}::NFTMarketplaceV3::place_bid`,
+        function: `${marketplaceAddr}::NFTMarketplaceV2::place_bid`,
         type_arguments: [],
         arguments: [
           marketplaceAddr,

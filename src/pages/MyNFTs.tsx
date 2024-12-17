@@ -35,7 +35,7 @@ const MyNFTs: React.FC = () => {
   const [totalNFTs, setTotalNFTs] = useState(0);
   const { account, signAndSubmitTransaction } = useWallet();
   const marketplaceAddr =
-  '0x73bffe1bc729aac927c95624887f9b67cc363d8951a2aebea3db9bd861583564';
+  '0x33b9e5f89e3e7b236af5bc85fcc6b2c5ee1f5871a389ae0f3f8d2477766f961d';
   
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedNft, setSelectedNft] = useState<NFT | null>(null);
@@ -51,7 +51,7 @@ const MyNFTs: React.FC = () => {
       console.log('Fetching NFT IDs for owner:', account.address);
 
       const nftIdsResponse = await client.view({
-        function: `${marketplaceAddr}::NFTMarketplaceV3::get_all_nfts_for_owner`,
+        function: `${marketplaceAddr}::NFTMarketplaceV2::get_all_nfts_for_owner`,
         arguments: [marketplaceAddr, account.address, '100', '0'],
         type_arguments: [],
       });
@@ -74,7 +74,7 @@ const MyNFTs: React.FC = () => {
           nftIds.map(async (id) => {
             try {
               const nftDetails = await client.view({
-                function: `${marketplaceAddr}::NFTMarketplaceV3::get_nft_details`,
+                function: `${marketplaceAddr}::NFTMarketplaceV2::get_nft_details`,
                 arguments: [marketplaceAddr, id],
                 type_arguments: [],
               });
@@ -159,7 +159,7 @@ const MyNFTs: React.FC = () => {
 
       const entryFunctionPayload = {
         type: 'entry_function_payload',
-        function: `${marketplaceAddr}::NFTMarketplaceV3::list_for_sale`,
+        function: `${marketplaceAddr}::NFTMarketplaceV2::list_for_sale`,
         type_arguments: [],
         arguments: [
           marketplaceAddr,
@@ -201,7 +201,7 @@ const MyNFTs: React.FC = () => {
 
       const entryFunctionPayload = {
         type: 'entry_function_payload',
-        function: `${marketplaceAddr}::NFTMarketplaceV3::start_auction`,
+        function: `${marketplaceAddr}::NFTMarketplaceV2::start_auction`,
         type_arguments: [],
         arguments: [
           marketplaceAddr,

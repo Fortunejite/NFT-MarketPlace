@@ -48,7 +48,7 @@ const AuctionPolling: React.FC<AuctionPollingProps> = ({
     try {
       const time = (
         await client.view({
-          function: `${marketplaceAddr}::NFTMarketplaceV3::get_current_time`,
+          function: `${marketplaceAddr}::NFTMarketplaceV2::get_current_time`,
           arguments: [],
           type_arguments: [],
         })
@@ -75,7 +75,7 @@ const AuctionPolling: React.FC<AuctionPollingProps> = ({
       // Create Entry Function Payload
       const payload = {
         type: 'entry_function_payload',
-        function: `${marketplaceAddr}::NFTMarketplaceV3::finalize_auction`,
+        function: `${marketplaceAddr}::NFTMarketplaceV2::finalize_auction`,
         type_arguments: [],
         arguments: [marketplaceAddr, auctionId.toString()], // Ensure `auctionId` is a string
       };
@@ -108,12 +108,9 @@ const AuctionPolling: React.FC<AuctionPollingProps> = ({
     const interval = setInterval(async () => {
       await updateBlockchainTime(); // Update blockchain time
       auctions?.forEach((auction) => {
-        if (blockchainTime >= auction.end_time) {
+        if (blockchainTime >= auction.end_time && auction.for_sale === 2) {
           console.log(`Ending auction ${auction.auction_id}`);
           endAuction(auction.auction_id);
-          setAuctions((prev) =>
-            prev.filter((a) => a.auction_id !== auction.auction_id),
-          );
         }
       });
     }, 10000); // Poll every 10 seconds
