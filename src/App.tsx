@@ -10,7 +10,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import AuctionView from "./pages/AuctionView";
 
 const client = new AptosClient("https://fullnode.devnet.aptoslabs.com/v1");
-const marketplaceAddr = "0x73bffe1bc729aac927c95624887f9b67cc363d8951a2aebea3db9bd861583564";
+const marketplaceAddr = "0x33b9e5f89e3e7b236af5bc85fcc6b2c5ee1f5871a389ae0f3f8d2477766f961d";
 
 function App() {
   const { account, signAndSubmitTransaction } = useWallet();
