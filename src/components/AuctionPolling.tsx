@@ -113,7 +113,7 @@ const AuctionPolling: React.FC<AuctionPollingProps> = ({
           endAuction(auction.auction_id);
         }
       });
-    }, 10000); // Poll every 10 seconds
+    }, 5000); // Poll every 5 seconds
 
     return () => clearInterval(interval);
   }, [blockchainTime, auctions]);
