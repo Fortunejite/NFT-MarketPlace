@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Buffer } from 'buffer';
 
 // Initialize the Aptos Client
-const client = new AptosClient('https://fullnode.devnet.aptoslabs.com/v1');
+const client = new AptosClient('https://fullnode.testnet.aptoslabs.com/v1');
 
 type DecodedAuction = {
   nft_id: number;
