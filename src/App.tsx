@@ -13,7 +13,7 @@ import AuctionView from "./pages/AuctionView";
 import MintNFTModal from "./components/MintNFTModal";
 
 // Constants
-const APTOS_NODE_URL = "https://fullnode.devnet.aptoslabs.com/v1";
+const APTOS_NODE_URL = "https://fullnode.testnet.aptoslabs.com/v1";
 const MARKETPLACE_ADDRESS = "0x33b9e5f89e3e7b236af5bc85fcc6b2c5ee1f5871a389ae0f3f8d2477766f961d";
 
 // Aptos Client
