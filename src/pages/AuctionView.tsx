@@ -20,7 +20,7 @@ import AuctionPolling from '../components/AuctionPolling';
 const { Title } = Typography;
 const { Meta } = Card;
 
-const client = new AptosClient('https://fullnode.devnet.aptoslabs.com/v1');
+const client = new AptosClient('https://fullnode.testnet.aptoslabs.com/v1');
 
 type Auction = {
   auction_id: number;
